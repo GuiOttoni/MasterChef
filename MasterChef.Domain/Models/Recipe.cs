@@ -7,8 +7,6 @@ namespace MasterChef.Domain.Models
         public int Id { get; set; }
 
         public int IdCategory { get; set; }
-
-        //public Categoria Categoria { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
@@ -20,7 +18,6 @@ namespace MasterChef.Domain.Models
         public string Preparation { get; set; }
         public string Ingredients { get; set; }
         public byte[] Image { get; set; }
-        //public bool Excluido { get; set; }
 
         public int DifficultyLevel { get; set; }
     }
