@@ -38,14 +38,16 @@ namespace MasterChef.Application.Services
             return _recipeRepository.List();
         }
 
-        public Task<List<Recipe>> List(int IdCategory)
+        public async Task<List<Recipe>> List(int IdCategory)
         {
-            throw new NotImplementedException();
+            var retorno = await _recipeRepository.List();
+            return retorno.Where(r => r.IdCategory == IdCategory).ToList();
         }
 
-        public Task<List<Recipe>> List(string Chef)
+        public async Task<List<Recipe>> List(string Chef)
         {
-            throw new NotImplementedException();
+            var retorno = await _recipeRepository.List();
+            return retorno.Where(r => r.Chef == Chef).ToList();
         }
 
         public Task<Recipe> Get(int id)

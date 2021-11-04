@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MasterChef.Controllers
+namespace MasterChef.API.Controllers
 {
     [ApiController]
     [Route("Api/[controller]/[Action]")]
@@ -43,7 +43,7 @@ namespace MasterChef.Controllers
         [HttpGet]
         public async Task<ActionResult<Recipe>> Get(int id)
         {
-            
+
             try
             {
                 var recipe = await _recipeService.Get(id);
@@ -88,13 +88,13 @@ namespace MasterChef.Controllers
             {
                 _recipeService.Create(recipe);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 response.Success = false;
                 response.Message = "falha ao salvar receita";
                 _logger.LogError(e.Message);
             }
-            
+
 
             return Ok(response);
         }
