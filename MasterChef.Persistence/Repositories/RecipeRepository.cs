@@ -16,6 +16,12 @@ namespace MasterChef.Persistence.Repositories
 
         public RecipeRepository(DataContext context)
         {
+            _context = context;
+        }
+
+        public async Task<List<Recipe>> List()
+        {
+            return await _context.Recipe.ToListAsync();
         }
 
         public void Delete(int id)
@@ -25,14 +31,24 @@ namespace MasterChef.Persistence.Repositories
             _context.SaveChanges();
         }
 
-        public Task Save(Recipe entity)
+        public async Task Save(Recipe entity)
         {
-            throw new NotImplementedException();
+            _context.Recipe.Add(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task Update(Recipe entity)
+        public async Task Update(Recipe entity)
         {
-            throw new NotImplementedException();
+            var existentEntity = await _context.Recipe.FirstOrDefaultAsync(x => x.Id == entity.Id);
+            existentEntity.IdCategory = entity.IdCategory;
+            existentEntity.Chef = entity.Chef;
+            existentEntity.Preparation = entity.Preparation;
+            existentEntity.Ingredients = entity.Ingredients;
+            existentEntity.UpdateDate = DateTime.Now;
+
+            _context.Update(existentEntity);
+            _context.SaveChanges();
+
         }
     }
 }
