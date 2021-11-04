@@ -47,5 +47,10 @@ namespace MasterChef.Application.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<Recipe> Get(int id)
+        {
+            return _recipeRepository.Get(id);
+        }
     }
 }

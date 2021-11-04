@@ -40,6 +40,41 @@ namespace MasterChef.Controllers
             return Ok(recipes);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<Recipe>> Get(int id)
+        {
+            
+            try
+            {
+                var recipe = await _recipeService.Get(id);
+                return Ok(recipe);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return NotFound();
+            }
+
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Recipe>>> NewRecipes()
+        {
+            var recipes = new List<Recipe>();
+            //todo implementar cache
+            try
+            {
+                recipes = await _recipeService.List();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+            }
+
+            return Ok(recipes);
+        }
+
         [HttpPost]
         public async Task<ActionResult<ResponseBase>> Create(Recipe recipe)
         {

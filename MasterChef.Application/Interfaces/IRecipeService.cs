@@ -8,6 +8,7 @@ namespace MasterChef.Application.Interfaces
     public interface IRecipeService
     {
         Task<List<Recipe>> List();
+        Task<Recipe> Get(int id);
         Task<List<Recipe>> List(int IdCategory);
         Task<List<Recipe>> List(string Chef);
 

@@ -33,6 +33,7 @@ namespace MasterChef.Persistence.Repositories
 
         public async Task Save(Recipe entity)
         {
+            entity.CreationDate = DateTime.Now;
             _context.Recipe.Add(entity);
             await _context.SaveChangesAsync();
         }
@@ -49,6 +50,12 @@ namespace MasterChef.Persistence.Repositories
             _context.Update(existentEntity);
             _context.SaveChanges();
 
+        }
+
+        public Task<Recipe> Get(int id)
+        {
+            var entity = _context.Recipe.FirstOrDefaultAsync(x => x.Id == id);
+            return entity;
         }
     }
 }
