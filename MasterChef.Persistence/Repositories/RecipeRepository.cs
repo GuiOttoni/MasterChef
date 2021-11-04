@@ -26,7 +26,7 @@ namespace MasterChef.Persistence.Repositories
 
         public void Delete(int id)
         {
-            var entity = _context.Recipe.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = _context.Recipe.FirstOrDefault(x => x.Id == id);
             _context.Remove(entity);
             _context.SaveChanges();
         }
@@ -38,11 +38,12 @@ namespace MasterChef.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(Recipe entity)
+        public void Update(Recipe entity)
         {
-            var existentEntity = await _context.Recipe.FirstOrDefaultAsync(x => x.Id == entity.Id);
+            var existentEntity = _context.Recipe.FirstOrDefault(x => x.Id == entity.Id);
             existentEntity.IdCategory = entity.IdCategory;
             existentEntity.Chef = entity.Chef;
+            existentEntity.Title = entity.Title;
             existentEntity.Preparation = entity.Preparation;
             existentEntity.Ingredients = entity.Ingredients;
             existentEntity.UpdateDate = DateTime.Now;
@@ -52,9 +53,9 @@ namespace MasterChef.Persistence.Repositories
 
         }
 
-        public Task<Recipe> Get(int id)
+        public async Task<Recipe> Get(int id)
         {
-            var entity = _context.Recipe.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await _context.Recipe.FirstOrDefaultAsync(x => x.Id == id);
             return entity;
         }
     }
