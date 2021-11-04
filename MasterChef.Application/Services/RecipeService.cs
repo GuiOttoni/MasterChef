@@ -33,9 +33,9 @@ namespace MasterChef.Application.Services
             _recipeRepository.Update(recipe);
         }
 
-        public Task<List<Recipe>> List()
+        public async Task<List<Recipe>> List()
         {
-            return _recipeRepository.List();
+            return await _recipeRepository.List();
         }
 
         public async Task<List<Recipe>> List(int IdCategory)

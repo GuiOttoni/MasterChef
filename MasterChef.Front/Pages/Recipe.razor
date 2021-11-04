@@ -1,0 +1,12 @@
+﻿@page "/recipe"
+@inject HttpClient Http
+
+
+<h3>Recipe</h3>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var r = await Http.GetAsync("https://localhost:44333/api/recipe/list");
+    }
+}
