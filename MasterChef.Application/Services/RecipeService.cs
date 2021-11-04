@@ -1,5 +1,6 @@
 ﻿using MasterChef.Application.Interfaces;
 using MasterChef.Domain;
+using MasterChef.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,22 +21,22 @@ namespace MasterChef.Application.Services
             throw new NotImplementedException();
         }
 
-        public List<Recipe> List()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Recipe> List(int IdCategory)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Recipe> List(string Chef)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(Recipe recipe)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Recipe>> IRecipeService.List()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Recipe>> IRecipeService.List(int IdCategory)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Recipe>> IRecipeService.List(string Chef)
         {
             throw new NotImplementedException();
         }
