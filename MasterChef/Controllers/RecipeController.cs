@@ -105,7 +105,7 @@ namespace MasterChef.API.Controllers
             var response = new ResponseBase
             {
                 Success = true,
-                Message = "Receita salva com sucesso"
+                Message = "Receita atualizada com sucesso"
             };
 
             try
@@ -115,7 +115,7 @@ namespace MasterChef.API.Controllers
             catch (Exception e)
             {
                 response.Success = false;
-                response.Message = "falha ao salvar receita";
+                response.Message = "falha ao atualizar receita";
                 _logger.LogError(e.Message);
             }
 
@@ -129,7 +129,7 @@ namespace MasterChef.API.Controllers
             var response = new ResponseBase
             {
                 Success = true,
-                Message = "Receita salva com sucesso"
+                Message = "Receita excluida com sucesso"
             };
 
             try
@@ -139,7 +139,7 @@ namespace MasterChef.API.Controllers
             catch (Exception e)
             {
                 response.Success = false;
-                response.Message = "falha ao salvar receita";
+                response.Message = "falha ao excluir receita";
                 _logger.LogError(e.Message);
             }
 

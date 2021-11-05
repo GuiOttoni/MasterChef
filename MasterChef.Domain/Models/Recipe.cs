@@ -17,7 +17,7 @@ namespace MasterChef.Domain.Models
 
         public string Preparation { get; set; }
         public string Ingredients { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public int DifficultyLevel { get; set; }
     }
